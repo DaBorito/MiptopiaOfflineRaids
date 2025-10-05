@@ -1,3 +1,5 @@
+//die else if Schleife scheint nicht zu funktionieren, der Rest des Codes ist perfekt
+
 function doGet(e) {
   var sheet = SpreadsheetApp.openById("1TogJK61W7bUIf6S_Z6SlWVPxvT7bm0XlVrRwgNZhyts").getSheetByName("Streamer");
   
