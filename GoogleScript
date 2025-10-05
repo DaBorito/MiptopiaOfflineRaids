@@ -1,0 +1,25 @@
+function doGet(e) {
+  var sheet = SpreadsheetApp.openById("1TogJK61W7bUIf6S_Z6SlWVPxvT7bm0XlVrRwgNZhyts").getSheetByName("Streamer");
+  
+  var text = e.parameter.text; // Text von StreamElements
+  var action = e.parameter.action; //remove oder add für StreamElements
+  
+  if(action == "add") {
+    // Text hinzufügen // StreamElements command !testADD
+    sheet.appendRow([new Date(), text]);
+    return ContentService.createTextOutput("Streamer hinzugefügt!");
+    
+  } else if(action == "remove") {
+    // Text entfernen // StreamElements command !testDELETE
+    var data = sheet.getDataRange().getValues();
+    for(var i = data.length - 1; i >= 1; i--) { 
+      if(data[i][1] == text) {
+        sheet.deleteRow(i+1);
+      }
+    }
+    return ContentService.createTextOutput("Streamer entfernt!");
+  }
+  
+  return ContentService.createTextOutput("Keine Aktion durchgeführt.");
+}
+
